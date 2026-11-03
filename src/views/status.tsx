@@ -1,3 +1,5 @@
+import { MISSING } from '../digest/read.js';
+import { RUN_STATUSES } from '../digest/types.js';
 import type { Status } from '../status.js';
 
 export function StatusBoard({ status }: { status: Status }) {
@@ -15,14 +17,23 @@ export function StatusBoard({ status }: { status: Status }) {
         </tbody>
       </table>
       <h2>nights on disk</h2>
+      <p class="mute">jobs by their last status of the night</p>
       {status.nights.length === 0 ? (
         <p class="mute">nothing in runs/</p>
       ) : (
-        <ul>
-          {status.nights.map((n) => (
-            <li>{n}</li>
-          ))}
-        </ul>
+        <table>
+          <thead>
+            <tr><th>night</th>{RUN_STATUSES.map((runStatus) => <th>{runStatus}</th>)}</tr>
+          </thead>
+          <tbody>
+            {status.nights.map(({ night, counts }) => (
+              <tr>
+                <td><a href={`/digest/${night}`}>{night}</a></td>
+                {RUN_STATUSES.map((runStatus) => <td>{counts === null ? MISSING : counts[runStatus]}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </>
   );
