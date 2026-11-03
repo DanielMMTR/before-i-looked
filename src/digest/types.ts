@@ -21,6 +21,8 @@ export type DigestRow = {
   owner: string | null;
   runs: number;
   retries: number;
+  /** Lines of this job with status `fail`. */
+  fails: number;
   lastStatus: RunStatus;
   lastError: string | null;
   firstAt: string;

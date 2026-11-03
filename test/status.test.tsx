@@ -17,8 +17,8 @@ describe('status board', () => {
 
   it('shows ok / retry / fail counts beside each night', async () => {
     const html = await (await createApp(config).request('/')).text();
-    expect(html).toContain('<td><a href="/digest/2026-10-28">2026-10-28</a></td><td>4</td><td>0</td><td>1</td>');
-    expect(html).toContain('<td><a href="/digest/2026-10-27">2026-10-27</a></td><td>4</td><td>0</td><td>0</td>');
+    expect(html).toContain('<td><a href="/digest/2026-10-28">2026-10-28</a></td><td>10</td><td>4</td><td>1</td>');
+    expect(html).toContain('<td><a href="/digest/2026-10-27">2026-10-27</a></td><td>7</td><td>0</td><td>0</td>');
   });
 
   it('health answers with the lane id', async () => {

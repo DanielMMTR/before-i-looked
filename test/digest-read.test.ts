@@ -36,6 +36,7 @@ describe('readNight on runs/2026-10-28.jsonl', () => {
       owner: 'rook',
       runs: 8,
       retries: 1,
+      fails: 0,
       lastStatus: 'ok',
       lastError: 'lock held',
       firstAt: '2026-10-28T23:00:06+01:00',

@@ -4,7 +4,7 @@ import type { DigestRow, NightDigest } from '../digest/types.js';
 const RETRIES_WARN_AT = 3;
 
 function needsAttention(row: DigestRow): boolean {
-  return row.retries >= RETRIES_WARN_AT || row.lastStatus === 'fail';
+  return row.retries >= RETRIES_WARN_AT || row.fails > 0;
 }
 
 function DigestTable({ rows }: { rows: DigestRow[] }) {

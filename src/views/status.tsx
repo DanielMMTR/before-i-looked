@@ -17,7 +17,7 @@ export function StatusBoard({ status }: { status: Status }) {
         </tbody>
       </table>
       <h2>nights on disk</h2>
-      <p class="mute">jobs by their last status of the night</p>
+      <p class="mute">log lines by status</p>
       {status.nights.length === 0 ? (
         <p class="mute">nothing in runs/</p>
       ) : (

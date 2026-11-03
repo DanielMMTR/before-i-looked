@@ -10,10 +10,10 @@ const tempDir = mkdtempSync(join(tmpdir(), 'rig-nights-'));
 afterAll(() => rmSync(tempDir, { recursive: true, force: true }));
 
 describe('listNights', () => {
-  it('lists the nights in runs/ newest first, counting jobs by last status', () => {
+  it('lists the nights in runs/ newest first, counting log lines by status', () => {
     expect(listNights(RUNS_DIR)).toEqual([
-      { night: '2026-10-28', counts: { ok: 4, retry: 0, fail: 1 } },
-      { night: '2026-10-27', counts: { ok: 4, retry: 0, fail: 0 } },
+      { night: '2026-10-28', counts: { ok: 10, retry: 4, fail: 1 } },
+      { night: '2026-10-27', counts: { ok: 7, retry: 0, fail: 0 } },
     ]);
   });
 

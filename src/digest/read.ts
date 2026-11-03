@@ -41,6 +41,7 @@ function startRow(line: RunLine): DigestRow {
     owner: line.owner,
     runs: 0,
     retries: 0,
+    fails: 0,
     lastStatus: line.status,
     lastError: null,
     firstAt: line.at,
@@ -52,6 +53,7 @@ function addLine(row: DigestRow, line: RunLine): void {
   row.owner = line.owner;
   row.runs += 1;
   if (line.status === 'retry') row.retries += 1;
+  if (line.status === 'fail') row.fails += 1;
   row.lastStatus = line.status;
   if (line.error !== undefined) row.lastError = line.error;
   row.lastAt = line.at;
