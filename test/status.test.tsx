@@ -10,7 +10,15 @@ describe('status board', () => {
     const html = await res.text();
     expect(res.status).toBe(200);
     expect(html).toContain('TEST-MARKER');
-    expect(html).toContain('2026-10-28');
+    expect(html).toContain('<a href="/digest/2026-10-28">2026-10-28</a>');
+    expect(html).toContain('<a href="/digest/2026-10-27">2026-10-27</a>');
+    expect(html.indexOf('/digest/2026-10-28')).toBeLessThan(html.indexOf('/digest/2026-10-27'));
+  });
+
+  it('shows ok / retry / fail counts beside each night', async () => {
+    const html = await (await createApp(config).request('/')).text();
+    expect(html).toContain('<td><a href="/digest/2026-10-28">2026-10-28</a></td><td>4</td><td>0</td><td>1</td>');
+    expect(html).toContain('<td><a href="/digest/2026-10-27">2026-10-27</a></td><td>4</td><td>0</td><td>0</td>');
   });
 
   it('health answers with the lane id', async () => {
