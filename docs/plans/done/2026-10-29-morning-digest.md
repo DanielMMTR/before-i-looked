@@ -1,8 +1,9 @@
 ---
 plan: morning-digest
-status: ready
+status: done
 owner: rook
 opened: 2026-10-29
+closed: 2026-11-03
 ---
 
 # Morning digest
@@ -77,3 +78,21 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Issues
+
+| # | Issue | Blocked by | Worker | Closed |
+|---|-------|-----------|--------|--------|
+| 1 | Digest types contract | — | claude-code · opus-5.5 · high | 2026-11-03 |
+| 2 | Run log reader | #1 | claude-code · opus-5.5 · high | 2026-11-03 |
+| 3 | Digest page: GET /digest/:night | #1 | claude-code · opus-5.5 · high | 2026-11-03 |
+| 4 | Digest JSON: GET /api/digest/:night | #1 | claude-code · opus-5.5 · high | 2026-11-03 |
+| 5 | Status board links to digests | #1 | claude-code · opus-5.5 · high | 2026-11-03 |
+| 6 | Digest route tests | #3, #4 | claude-code · opus-5.5 · high | 2026-11-03 |
+| 7 | Preview for review | #3–#6 | claude-code · opus-5.5 · high | 2026-11-03 |
+| 8 | Clean up preview and plan | #7, review | claude-code · opus-5.5 · high | 2026-11-03 |
+
+Issues: https://github.com/DanielMMTR/before-i-looked/issues?q=label%3Aplan%3Amorning-digest
+
+The board counts were changed after #5 closed: per log line instead of per job by last status, so retries show (follow-up commit on #5).
+The preview at https://danielmmtr.github.io/rig-previews/ had its lane marker removed after the review (ADR 0003).
